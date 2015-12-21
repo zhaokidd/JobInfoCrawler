@@ -2,9 +2,19 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/CircleButton/CircleButton.iml" filepath="$PROJECT_DIR$/CircleButton/CircleButton.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CircleButton/CircleButton.iml" filepath="$PROJECT_DIR$/CircleButton/CircleButton.iml" />
       <module fileurl="file://$PROJECT_DIR$/ZY_PRACTICE2.iml" filepath="$PROJECT_DIR$/ZY_PRACTICE2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/animationtest/animationtest.iml" filepath="$PROJECT_DIR$/animationtest/animationtest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo/demo.iml" filepath="$PROJECT_DIR$/demo/demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo/demo.iml" filepath="$PROJECT_DIR$/demo/demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nuomicrawler/nuomicrawler.iml" filepath="$PROJECT_DIR$/nuomicrawler/nuomicrawler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sinaweiboapi/sinaweiboapi.iml" filepath="$PROJECT_DIR$/sinaweiboapi/sinaweiboapi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sinaweiboapi/sinaweiboapi.iml" filepath="$PROJECT_DIR$/sinaweiboapi/sinaweiboapi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sinaweibotest/sinaweibotest.iml" filepath="$PROJECT_DIR$/sinaweibotest/sinaweibotest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sinaweibotest/sinaweibotest.iml" filepath="$PROJECT_DIR$/sinaweibotest/sinaweibotest.iml" />
     </modules>
   </component>
 </project>

@@ -1,7 +1,13 @@
 .gradle
 /local.properties
-/.idea/workspace.xml
-/.idea/libraries
 .DS_Store
 /build
+/.idea
+/ZY_PRACTICE2.iml
 /captures
+
+/CircleButton/
+/demo/
+/sinaweiboapi/
+/sinaweibotest/
+/animationtest/

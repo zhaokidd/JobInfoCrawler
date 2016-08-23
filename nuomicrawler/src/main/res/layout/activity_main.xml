@@ -13,39 +13,56 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:layout_marginLeft="160dp"
-        android:layout_marginStart="160dp"
+        android:layout_marginLeft="288dp"
+        android:layout_marginStart="288dp"
         android:layout_marginTop="96dp"
         android:text="@string/start"
         app:layout_constraintBottom_toBottomOf="@+id/activity_main"
         app:layout_constraintLeft_toLeftOf="@+id/activity_main"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView"
+        app:layout_constraintVertical_bias="0.82" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="411dp"
         android:layout_height="400dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="@+id/activity_main"
-        app:layout_constraintTop_toTopOf="@+id/activity_main" />
+        app:layout_constraintRight_toRightOf="@+id/activity_main"
+        tools:layout_editor_absoluteY="61dp" />
 
     <EditText
         android:id="@+id/editText2"
-        android:layout_width="307dp"
-        android:layout_height="43dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_width="110dp"
+        android:layout_height="46dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/whichcity"
         android:inputType="textPersonName"
         android:textAppearance="@android:style/TextAppearance.Material.Widget.EditText"
-        app:layout_constraintBottom_toTopOf="@+id/btn_start"
         app:layout_constraintLeft_toLeftOf="@+id/activity_main"
-        app:layout_constraintRight_toRightOf="@+id/activity_main"
         app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="@string/default_search_pages"
+        app:layout_constraintLeft_toLeftOf="@+id/editText2"
+        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="411dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        app:layout_constraintLeft_toLeftOf="@+id/activity_main"
+        app:layout_constraintTop_toTopOf="@+id/activity_main" />
 
 </android.support.constraint.ConstraintLayout>

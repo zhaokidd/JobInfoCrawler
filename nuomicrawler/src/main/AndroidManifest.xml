@@ -16,7 +16,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize"><!-- to fix the problem that the InputMethod panel cover the UI -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

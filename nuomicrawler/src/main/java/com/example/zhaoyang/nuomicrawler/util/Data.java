@@ -10,4 +10,5 @@ public class Data {
     public static final String USER_AGENT = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36";
     public static final String USERNAME = "zhao126_7@sina.com";
     public static final String PASSWORD = "000521kidd";
+    public static final int COUNT_SEARCH_PAGE = 10;
 }

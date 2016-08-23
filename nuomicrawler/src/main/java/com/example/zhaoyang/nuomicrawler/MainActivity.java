@@ -12,6 +12,7 @@ import android.widget.EditText;
 import com.example.zhaoyang.nuomicrawler.module.VTwoData;
 import com.example.zhaoyang.nuomicrawler.module.VTwoRecyclerViewAdapter;
 import com.example.zhaoyang.nuomicrawler.network.VTwoExCrawlerTask;
+import com.example.zhaoyang.nuomicrawler.util.Data;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,9 +27,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     EditText et_city;
     private VTwoRecyclerViewAdapter mAdapter;
     private ArrayList<VTwoData> mDataSet;
-    private String TAG = "MainActivity";
-    private String URL_TEST = "https://zh.nuomi.com/film/9742/3581-0/subd/cb0-d10000-s6-o-b1-f0-p1#cinema-sort";
-    private String MY_ZHIHU_TOPICS = "https://www.zhihu.com/people/zhao-yang-90-41/topics";
+//    private String TAG = "MainActivity";
+//    private String URL_TEST = "https://zh.nuomi.com/film/9742/3581-0/subd/cb0-d10000-s6-o-b1-f0-p1#cinema-sort";
+//    private String MY_ZHIHU_TOPICS = "https://www.zhihu.com/people/zhao-yang-90-41/topics";
 
 
     @Override
@@ -59,16 +60,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String city = et_city.getText().toString().trim();
         if (city.equals("")) {
             return;
+        } else {
+            mDataSet.clear();
         }
-        VTwoExCrawlerTask mTask = new VTwoExCrawlerTask(this, 3, this, city);
-        //Use this THREAD_POOL_EXECUTOR, task can run paralled
-        mTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        for (int i = 0; i < Data.COUNT_SEARCH_PAGE; i++) {
+            VTwoExCrawlerTask mTask = new VTwoExCrawlerTask(this, i, this, city);
+            //Use this THREAD_POOL_EXECUTOR, task can run paralled
+            mTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        }
+
     }
 
 
     @Override
     public void onUpdateResult(List<VTwoData> result) {
-        mDataSet.clear();
         mDataSet.addAll(result);
         mAdapter.notifyDataSetChanged();
     }

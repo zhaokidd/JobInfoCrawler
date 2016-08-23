@@ -3,4 +3,5 @@
     <string name="start">开始</string>
     <string name="textview">文本框</string>
     <string name="whichcity">你想搜索那座城市的职位信息</string>
+    <string name="default_search_pages">默认搜索10页</string>
 </resources>

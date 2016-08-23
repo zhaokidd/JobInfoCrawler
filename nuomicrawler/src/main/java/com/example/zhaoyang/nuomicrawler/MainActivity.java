@@ -71,7 +71,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //Use this THREAD_POOL_EXECUTOR, task can run paralled
             mTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         }
-
     }
 
 

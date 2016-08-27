@@ -1,5 +1,6 @@
 package com.example.zhaoyang.nuomicrawler;
 
+import android.app.Notification;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,15 +14,18 @@ import android.widget.EditText;
 import com.example.zhaoyang.nuomicrawler.module.VTwoData;
 import com.example.zhaoyang.nuomicrawler.module.VTwoRecyclerViewAdapter;
 import com.example.zhaoyang.nuomicrawler.network.VTwoExCrawlerTask;
+import com.example.zhaoyang.nuomicrawler.service.ForeGroundService;
 import com.example.zhaoyang.nuomicrawler.util.Data;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, VTwoExCrawlerTask.onCrawSuccess {
+    Button btn_test_foreGround;
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
     @BindView(R.id.editText2)
@@ -30,10 +34,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Toolbar toolbar;
     private VTwoRecyclerViewAdapter mAdapter;
     private ArrayList<VTwoData> mDataSet;
+    private ForeGroundService mService;
 //    private String TAG = "MainActivity";
 //    private String URL_TEST = "https://zh.nuomi.com/film/9742/3581-0/subd/cb0-d10000-s6-o-b1-f0-p1#cinema-sort";
 //    private String MY_ZHIHU_TOPICS = "https://www.zhihu.com/people/zhao-yang-90-41/topics";
 
+
+    private List<VTwoExCrawlerTask> mTasks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,12 +53,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void init() {
         Button btn_start = (Button) findViewById(R.id.btn_start);
         btn_start.setOnClickListener(this);
+        mService = new ForeGroundService();
+        btn_test_foreGround.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mService.startForeground(0, new Notification.Builder(MainActivity.this).build());
+            }
+        });
         //init recyclerview
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mDataSet = new ArrayList<VTwoData>();
         mAdapter = new VTwoRecyclerViewAdapter(this, mDataSet);
         mRecyclerView.setAdapter(mAdapter);
         setSupportActionBar(toolbar);
+
+        mTasks = new ArrayList<VTwoExCrawlerTask>();
     }
 
     @Override
@@ -68,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         for (int i = 0; i < Data.COUNT_SEARCH_PAGE; i++) {
             VTwoExCrawlerTask mTask = new VTwoExCrawlerTask(this, i, this, city);
+            mTasks.add(mTask);
             //Use this THREAD_POOL_EXECUTOR, task can run paralled
             mTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         }
@@ -78,5 +95,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onUpdateResult(List<VTwoData> result) {
         mDataSet.addAll(result);
         mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    private void cancelAllTask() {
+        Iterator<VTwoExCrawlerTask> iterator = mTasks.iterator();
+        while (iterator.hasNext()) {
+            VTwoExCrawlerTask mTask = iterator.next();
+            mTask.cancel(true);
+        }
     }
 }

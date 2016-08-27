@@ -18,13 +18,18 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize"><!-- to fix the problem that the InputMethod panel cover the UI -->
+            android:windowSoftInputMode="stateHidden|adjustResize"> <!-- to fix the problem that the InputMethod panel cover the UI -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".service.ForeGroundService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>
